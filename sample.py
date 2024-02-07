@@ -133,12 +133,6 @@ to_lang = dic[dic.index(to_lang) + 1]
 
 to_lang = input('Preferred language :').lower()
 to_lang = dic[dic.index(to_lang) + 1]
-# Assuming you have rough estimations
-# Real height of the object (in meters)
-real_object_height = 0.2  # Example: 20 cm
-
-# Focal length of the camera (in pixels)
-focal_length = 1000
 
 # Initialize a dictionary to keep track of voiced objects and their last detection status
 voiced_objects = {}
@@ -227,12 +221,8 @@ while True:
         if object_name not in voiced_objects or not voiced_objects[object_name]:
             voiced_objects[object_name] = True
 
-            # Calculate estimated distance
-            estimated_distance = (real_object_height * focal_length) / h  # Using simple triangle similarity
-            print(object_name, "Distance:", estimated_distance, "meters")
-
             # Generate and play the audio
-            text_to_speak = f'{object_name} is approximately {estimated_distance:.2f} meters away.'
+            text_to_speak = f'{object_name} is infront of you'
             play_audio(text_to_speak, to_lang)
 
     # Update voiced status for objects that are not detected
